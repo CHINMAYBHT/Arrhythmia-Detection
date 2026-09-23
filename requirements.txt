@@ -7,5 +7,6 @@ scipy>=1.13
 matplotlib>=3.9
 seaborn>=0.13
 PyWavelets>=1.6
+imbalanced-learn>=0.12
 tqdm>=4.66
 jupyter>=1.0
