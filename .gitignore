@@ -1,0 +1,44 @@
+# Virtual environment
+venv/
+env/
+.venv/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.ipynb_checkpoints/
+
+# Data (large files - don't push raw/processed ECG data to GitHub)
+data/raw/
+data/processed/
+*.dat
+*.hea
+*.atr
+*.csv
+*.npy
+*.npz
+
+# Trained models (can be large)
+models/*.h5
+models/*.pkl
+models/*.joblib
+models/*.pt
+
+# Logs
+logs/
+*.log
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Environment variables / secrets
+.env
+
+# Jupyter
+*.ipynb_checkpoints
