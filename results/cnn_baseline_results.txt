@@ -1,0 +1,21 @@
+cnn_baseline results
+Accuracy: 0.7270
+
+              precision    recall  f1-score   support
+
+           N       0.94      0.76      0.84     44245
+           S       0.06      0.17      0.08      1837
+           V       0.86      0.71      0.78      3220
+           F       0.00      0.01      0.00       388
+           Q       0.00      0.57      0.00         7
+
+    accuracy                           0.73     49697
+   macro avg       0.37      0.44      0.34     49697
+weighted avg       0.89      0.73      0.80     49697
+
+Confusion matrix (rows=true, cols=pred):
+[[33525  5013   315  3659  1733]
+ [ 1453   307     8    47    22]
+ [  382    87  2289   186   276]
+ [  327    12    43     4     2]
+ [    1     1     1     0     4]]

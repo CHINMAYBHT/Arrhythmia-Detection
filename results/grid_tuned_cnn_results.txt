@@ -1,0 +1,21 @@
+grid_tuned_cnn results
+Accuracy: 0.7027
+
+              precision    recall  f1-score   support
+
+           N       0.95      0.72      0.82     44245
+           S       0.05      0.33      0.09      1837
+           V       0.82      0.74      0.78      3220
+           F       0.01      0.00      0.00       388
+           Q       0.00      0.29      0.00         7
+
+    accuracy                           0.70     49697
+   macro avg       0.37      0.42      0.34     49697
+weighted avg       0.90      0.70      0.78     49697
+
+Confusion matrix (rows=true, cols=pred):
+[[31930 10689   407   103  1116]
+ [ 1197   614    11     2    13]
+ [  344   424  2375     6    71]
+ [  271    13   101     1     2]
+ [    2     1     2     0     2]]

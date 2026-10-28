@@ -1,0 +1,23 @@
+Metaheuristic (GWO/WOA) vs standard Adam CNN tuning - comparison
+======================================================================
+
+Baseline (plain Adam, default hyperparams, from src/cnn_model.py):
+  Test accuracy: 0.7270
+
+GWO-tuned CNN:
+  Search validation macro-F1: 0.6270
+  Tuned hyperparameters: {'learning_rate': 0.000552737096496019, 'dropout_rate': 0.16191590915983178, 'num_filters': (78, 156, 312), 'dense_units': 161, 'kernel_size': 11}
+  Final test-set metrics: see results/gwo_tuned_cnn_results.txt
+
+WOA-tuned CNN:
+  Search validation macro-F1: 0.5557
+  Tuned hyperparameters: {'learning_rate': 0.0001270220442071139, 'dropout_rate': 0.17295184042567865, 'num_filters': (125, 250, 500), 'dense_units': 75, 'kernel_size': 7}
+  Final test-set metrics: see results/woa_tuned_cnn_results.txt
+
+Research question: is metaheuristic tuning worth it here?
+Compare the test accuracy / macro-F1 in results/cnn_baseline_results.txt
+against results/gwo_tuned_cnn_results.txt and results/woa_tuned_cnn_results.txt.
+If GWO/WOA test performance is not meaningfully better than the plain-Adam
+baseline given the extra compute (36 short trainings each on top of the
+final retrain), the practical answer for this dataset/model size is likely
+'no, not worth it' -- but let the actual numbers in those three files decide.
