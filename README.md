@@ -15,6 +15,11 @@ for a plain-language description of the goal.
 | 2 | 1D-CNN (raw beat windows) | [src/cnn_model.py](src/cnn_model.py) | Implemented, **run on Kaggle** |
 | 3 | CNN-LSTM hybrid (5-beat sequences, per-patient) | [src/cnn_lstm_model.py](src/cnn_lstm_model.py) | Implemented, **run on Kaggle** |
 | — | GWO / WOA hyperparameter tuning for Model 2 | [src/metaheuristic_tuning.py](src/metaheuristic_tuning.py) | Implemented, **run on Kaggle** |
+| — | Grid-search control (same budget as GWO/WOA) | [src/grid_search_tuning.py](src/grid_search_tuning.py) | Implemented, **run on Kaggle** |
+
+The combined comparison table is in [results/comparison_table.md](results/comparison_table.md),
+the error analysis in [results/error_analysis.txt](results/error_analysis.txt), figures in
+[figures/](figures/), and the final report source in [report/Final_Report.tex](report/Final_Report.tex).
 
 All models share one preprocessing pipeline ([src/preprocessing.py](src/preprocessing.py))
 and one patient-independent train/test split, and log accuracy/precision/recall/F1/confusion-matrix
@@ -42,12 +47,16 @@ ad/
 │   ├── svm_baseline.py         # Model 1: SVM / Random Forest
 │   ├── cnn_model.py            # Model 2: 1D-CNN
 │   ├── cnn_lstm_model.py       # Model 3: CNN-LSTM hybrid
-│   └── metaheuristic_tuning.py # GWO / WOA hyperparameter search for Model 2
+│   ├── metaheuristic_tuning.py # GWO / WOA hyperparameter search for Model 2
+│   ├── grid_search_tuning.py   # grid-search control arm for the tuning experiment
+│   └── compare_results.py      # builds comparison table, error analysis, figures
 ├── kaggle_pipeline.ipynb       # self-contained notebook: run Models 1-3 + tuning on Kaggle
 ├── data/            (gitignored) raw/ and processed/ MIT-BIH arrays
 ├── models/          (gitignored) trained model files
 ├── logs/            (gitignored) per-epoch training logs (CSV)
-├── results/         classification reports + confusion matrices (comparable across models)
+├── results/         per-model reports, comparison_table.{md,csv}, error_analysis.txt
+├── figures/         per-class F1, confusion matrices, tuning comparison (from compare_results.py)
+├── report/          final report (LaTeX, compile on Overleaf with report/figures/)
 ├── documentation/   project guidelines, synopsis, plain-language explainer
 └── requirements.txt
 ```
@@ -59,6 +68,7 @@ pip install -r requirements.txt
 python src/download_data.py       # downloads MIT-BIH into data/raw/ (~100MB)
 python src/preprocessing.py       # builds data/processed/*.npy
 python src/svm_baseline.py        # trains RF + SVM, writes results/*.txt
+python src/compare_results.py     # comparison table + error analysis + figures from results/
 ```
 
 ## Running on Kaggle (Models 2, 3, GWO/WOA)
@@ -101,9 +111,12 @@ it does not read the repo live).
 
 ## Known caveats
 
-- The CNN/CNN-LSTM/tuning scripts have been written and logic-checked by
-  careful reading, but not executed end-to-end anywhere yet — that
-  verification happens the first time you run `kaggle_pipeline.ipynb`.
+- `cnn_model.py` and `cnn_lstm_model.py` pass the test set as Keras
+  `validation_data` (used by EarlyStopping / ReduceLROnPlateau), so their
+  test scores are slightly optimistic. A patient-wise validation split is
+  listed as future work in the final report.
+- Each model was run once with seed 42; differences of a few points are
+  within run-to-run variation.
 - The GWO/WOA search's internal validation split (used to score candidates
   during the search) is a stratified random split of training beats, not a
   further patient-independent split, since patient IDs aren't currently

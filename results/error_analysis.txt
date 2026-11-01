@@ -1,0 +1,76 @@
+=== SVM ===
+Recall per class: N=0.798, S=0.177, V=0.923, F=0.072, Q=0.000
+Precision per class: N=0.960, S=0.251, V=0.536, F=0.005, Q=0.000
+Misclassified beats: 11062 of 49697
+Top confusions (true -> predicted):
+  N -> F: 5969 (54.0% of all errors, 13.5% of true N)
+  N -> V: 2057 (18.6% of all errors, 4.6% of true N)
+  S -> N: 1164 (10.5% of all errors, 63.4% of true S)
+  N -> S: 894 (8.1% of all errors, 2.0% of true N)
+  S -> V: 294 (2.7% of all errors, 16.0% of true S)
+
+=== Random Forest ===
+Recall per class: N=0.888, S=0.156, V=0.952, F=0.289, Q=0.000
+Precision per class: N=0.964, S=0.252, V=0.668, F=0.036, Q=0.000
+Misclassified beats: 6946 of 49697
+Top confusions (true -> predicted):
+  N -> F: 3022 (43.5% of all errors, 6.8% of true N)
+  S -> N: 1355 (19.5% of all errors, 73.8% of true S)
+  N -> V: 1067 (15.4% of all errors, 2.4% of true N)
+  N -> S: 815 (11.7% of all errors, 1.8% of true N)
+  F -> V: 259 (3.7% of all errors, 66.8% of true F)
+
+=== 1D-CNN (Adam, default HPs) ===
+Recall per class: N=0.758, S=0.167, V=0.711, F=0.010, Q=0.571
+Precision per class: N=0.939, S=0.057, V=0.862, F=0.001, Q=0.002
+Misclassified beats: 13568 of 49697
+Top confusions (true -> predicted):
+  N -> S: 5013 (36.9% of all errors, 11.3% of true N)
+  N -> F: 3659 (27.0% of all errors, 8.3% of true N)
+  N -> Q: 1733 (12.8% of all errors, 3.9% of true N)
+  S -> N: 1453 (10.7% of all errors, 79.1% of true S)
+  V -> N: 382 (2.8% of all errors, 11.9% of true V)
+
+=== 1D-CNN (grid-search tuned) ===
+Recall per class: N=0.722, S=0.334, V=0.738, F=0.003, Q=0.286
+Precision per class: N=0.946, S=0.052, V=0.820, F=0.009, Q=0.002
+Misclassified beats: 14775 of 49697
+Top confusions (true -> predicted):
+  N -> S: 10689 (72.3% of all errors, 24.2% of true N)
+  S -> N: 1197 (8.1% of all errors, 65.2% of true S)
+  N -> Q: 1116 (7.6% of all errors, 2.5% of true N)
+  V -> S: 424 (2.9% of all errors, 13.2% of true V)
+  N -> V: 407 (2.8% of all errors, 0.9% of true N)
+
+=== 1D-CNN (GWO tuned) ===
+Recall per class: N=0.778, S=0.049, V=0.870, F=0.015, Q=0.429
+Precision per class: N=0.944, S=0.057, V=0.588, F=0.001, Q=0.002
+Misclassified beats: 12352 of 49697
+Top confusions (true -> predicted):
+  N -> F: 4788 (38.8% of all errors, 10.8% of true N)
+  N -> V: 1828 (14.8% of all errors, 4.1% of true N)
+  N -> Q: 1698 (13.7% of all errors, 3.8% of true N)
+  S -> N: 1661 (13.4% of all errors, 90.4% of true S)
+  N -> S: 1488 (12.0% of all errors, 3.4% of true N)
+
+=== 1D-CNN (WOA tuned) ===
+Recall per class: N=0.797, S=0.079, V=0.776, F=0.015, Q=0.286
+Precision per class: N=0.945, S=0.062, V=0.812, F=0.001, Q=0.001
+Misclassified beats: 11766 of 49697
+Top confusions (true -> predicted):
+  N -> F: 4961 (42.2% of all errors, 11.2% of true N)
+  N -> S: 2063 (17.5% of all errors, 4.7% of true N)
+  S -> N: 1623 (13.8% of all errors, 88.4% of true S)
+  N -> Q: 1450 (12.3% of all errors, 3.3% of true N)
+  N -> V: 492 (4.2% of all errors, 1.1% of true N)
+
+=== CNN-LSTM ===
+Recall per class: N=0.871, S=0.079, V=0.849, F=0.005, Q=0.000
+Precision per class: N=0.946, S=0.036, V=0.616, F=0.005, Q=0.000
+Misclassified beats: 8254 of 49609
+Top confusions (true -> predicted):
+  N -> S: 3871 (46.9% of all errors, 8.8% of true N)
+  S -> N: 1638 (19.8% of all errors, 89.3% of true S)
+  N -> V: 1560 (18.9% of all errors, 3.5% of true N)
+  V -> N: 287 (3.5% of all errors, 8.9% of true V)
+  F -> N: 285 (3.5% of all errors, 73.5% of true F)
